@@ -1,6 +1,6 @@
 Install docker and docker compose @todo LINK 
 
-docker build -t SolanaAnchor .
+docker build -t solana-anchor .
 
 If you see an error like:
 
@@ -8,4 +8,4 @@ ERROR: permission denied while trying to connect to the Docker daemon socket at 
 
 the execute
 
-sudo usermod -aG docker $USER
+sudo chmod 777 /var/run/docker.sock
