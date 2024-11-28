@@ -9,3 +9,7 @@ ERROR: permission denied while trying to connect to the Docker daemon socket at 
 the execute
 
 sudo chmod 777 /var/run/docker.sock
+
+docker run -it -v .:/workdir solana-anchor
+
+anchor init counter

@@ -46,6 +46,8 @@ RUN anchor --version
 
 
 # Build a dummy program to bootstrap the BPF SDK (doing this speeds up builds).
-RUN mkdir -p /tmp && cd tmp && anchor init dummy && cd dummy && anchor build
+# RUN mkdir -p /tmp && cd tmp && anchor init dummy && cd dummy && anchor build
 
 WORKDIR /workdir
+
+VOLUME /workdir
