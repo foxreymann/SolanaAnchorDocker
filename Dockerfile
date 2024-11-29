@@ -31,8 +31,7 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-# RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
-RUN . ./install
+RUN sh -c "$(curl -sSfL https://raw.githubusercontent.com/foxreymann/SolanaAnchorDocker/refs/heads/master/install)"
 
 # Generate private key
 RUN solana-keygen new --no-passphrase -o ~/.config/solana/id.json
