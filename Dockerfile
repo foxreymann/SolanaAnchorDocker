@@ -36,6 +36,8 @@ RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
 # Generate private key
 RUN solana-keygen new --no-passphrase -o ~/.config/solana/id.json
 
+RUN solana config set --url https://api.devnet.solana.com
+
 # Install anchor.
 RUN cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
 RUN avm install latest

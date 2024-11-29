@@ -12,7 +12,7 @@ the execute
 
 sudo chmod 777 /var/run/docker.sock
 
-# HOW TO
+# HOW TO / DEV WORKFLOW
 
 docker run --name solana-anchor -d -v .:/workdir solana-anchor tail -f /dev/null
 
@@ -20,7 +20,9 @@ docker exec solana-anchor anchor init mars
 
 docker exec -w /workdir/mars solana-anchor anchor test 
 
+# TIPS
 
+docker exec -it solana-anchor bash
 
 # HOW TO 11/28
 
