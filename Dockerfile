@@ -31,7 +31,7 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-RUN sh -c "$(curl -sSfL http://34.120.77.145/stable/install)"
+RUN sh -c "$(curl -sSfL https://raw.githubusercontent.com/foxreymann/SolanaAnchorDocker/refs/heads/master/install)"
 
 
 # Generate private key
