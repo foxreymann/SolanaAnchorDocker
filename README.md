@@ -1,47 +1,61 @@
+A user-friendly Solana Anchor Docker solution that eliminates setup hurdles and simplifies the development workflow.
+
 # SETUP
 
-Install docker and docker compose @todo LINK 
+[Install Docker](https://docs.docker.com/desktop/)
 
-docker build -t solana-anchor .
+Clone this repository:
 
-If you see an error like:
+`git clone git@github.com:foxreymann/SolanaAnchorDocker.git`
 
-ERROR: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head "http://%2Fvar%2Frun%2Fdocker.sock/_ping": dial unix /var/run/docker.sock: connect: permission denied
+Enter the directory:
 
-the execute
+`cd SolanaAnchorDocker`
 
-sudo chmod 777 /var/run/docker.sock
+Build the image (might take some time on the first run):
 
-# HOW TO / DEV WORKFLOW
+`docker build -t solana-anchor .`
 
-docker run --name solana-anchor -d -v .:/workdir solana-anchor tail -f /dev/null
+# ANCHOR DEVELOPMENT WORKFLOW
 
-docker exec solana-anchor anchor init mars
+Start the container:
 
-docker exec -w /workdir/mars solana-anchor anchor test 
+`docker run --name solana-anchor -d -v .:/workdir solana-anchor tail -f /dev/null`
+
+Create an Anchor project:
+
+`docker exec solana-anchor anchor init PROJECT_NAME`
+
+Test the project:
+
+`docker exec -w /workdir/PROJECT_NAME solana-anchor anchor test`
+
+Build the project:
+
+`docker exec -w /workdir/PROJECT_NAME solana-anchor anchor build`
+
+Before deployment you have to start Solana Test Validator. Do this in a new terminal window to see the logs:
+
+`docker exec -it solana-anchor solana-test-validator`
+
+Deploy the project:
+
+`docker exec -w /workdir/PROJECT_NAME solana-anchor anchor deploy`
 
 # TIPS
 
-docker exec -it solana-anchor bash
+Top open a Bash terminal session inside the Docker container:
 
-# HOW TO 11/28
+`docker exec -it solana-anchor bash`
 
-docker run -v .:/workdir solana-anchor anchor init mars
+# TROUBLESHOOTING
 
-cd mars
+If you see an error like:
 
-docker run -v .:/workdir solana-anchor anchor test
+`
+ERROR: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head "http://%2Fvar%2Frun%2Fdocker.sock/_ping": dial unix /var/run/docker.sock: connect: permission denied
+`
 
-# OLD
+the execute
 
-docker run -it -v .:/workdir solana-anchor
-
-anchor init counter
-
-docker run --name solana-anchor -d -v .:/workdir solana-anchor tail -f /dev/null
-
-docker exec -t solana-anchor anchor init mars2
-
-export anchor="docker exec -t solana-anchor anchor"
-
-$anchor init mars5
+`sudo chmod 777 /var/run/docker.sock`
