@@ -1,9 +1,3 @@
-#
-# Docker image to generate deterministic, verifiable builds of Anchor programs.
-# This must be run *after* a given ANCHOR_CLI version is published and a git tag
-# is released on GitHub.
-#
-
 FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -37,7 +31,10 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-RUN sh -c "$(curl -sSfL https://release.anza.xyz/${SOLANA_CLI}/install)"
+RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+
+# Generate private key
+RUN solana-keygen new --no-passphrase -o ~/.config/solana/id.json
 
 # Install anchor.
 RUN cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
