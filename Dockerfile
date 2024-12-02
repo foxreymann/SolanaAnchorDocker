@@ -31,14 +31,12 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-# RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
-WORKDIR /usr/src/app
-RUN git clone https://github.com/anza-xyz/agave.git
-
-WORKDIR /usr/src/app/agave
-RUN ./cargo build
-
-ENV PATH="/usr/src/app/agave/bin:${PATH}"
+ RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+# WORKDIR /usr/src/app
+# RUN git clone https://github.com/anza-xyz/agave.git
+# WORKDIR /usr/src/app/agave
+# RUN ./cargo build
+# ENV PATH="/usr/src/app/agave/bin:${PATH}"
 
 
 # Generate private key
