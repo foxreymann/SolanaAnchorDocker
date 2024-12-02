@@ -1,0 +1,7 @@
+{
+	"name": "Solana Anchor Docker",
+	"build": {
+		"context": "..",
+		"dockerfile": "../Dockerfile"
+	}
+}

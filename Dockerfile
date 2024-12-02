@@ -14,7 +14,7 @@ ENV PATH="${HOME}/.nvm/versions/node/${NODE_VERSION}/bin:${PATH}"
 RUN mkdir -p /workdir && mkdir -p /tmp && \
     apt-get update -qq && apt-get upgrade -qq && apt-get install -qq \
     build-essential git curl wget jq pkg-config python3-pip \
-    libssl-dev libudev-dev
+    libssl-dev libudev-dev zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler
 
 # Install rust.
 RUN curl "https://sh.rustup.rs" -sfo rustup.sh && \
@@ -31,7 +31,15 @@ RUN . $NVM_DIR/nvm.sh && \
     npm install -g yarn
 
 # Install Solana tools.
-RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+# RUN sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+WORKDIR /usr/src/app
+RUN git clone https://github.com/anza-xyz/agave.git
+
+WORKDIR /usr/src/app/agave
+RUN ./cargo build
+
+ENV PATH="/usr/src/app/agave/bin:${PATH}"
+
 
 # Generate private key
 RUN solana-keygen new --no-passphrase -o ~/.config/solana/id.json
@@ -40,7 +48,7 @@ RUN solana config set --url http://127.0.0.1:8899
 
 RUN solana airdrop 2 || true
 
-# Install anchor.
+## Install anchor.
 RUN cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
 RUN avm install latest
 RUN anchor --version

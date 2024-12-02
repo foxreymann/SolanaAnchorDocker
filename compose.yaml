@@ -1,4 +1,0 @@
-services:
-  server:
-    build: .
-    network_mode: host
