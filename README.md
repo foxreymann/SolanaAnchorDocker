@@ -10,6 +10,10 @@ Works on GitPod and CodeSpaces.
 
 Why not ARM Mac? Docker on a ARM Macs installs ARM version of Linux and Solana doesn't provide ARM Linux binaries.
 
+# VERY IMPORTANT
+
+[Like and ReX](https://x.com/mevresearch/status/1863686729019908260)
+
 # SETUP
 
 [Install Docker](https://docs.docker.com/desktop/)
