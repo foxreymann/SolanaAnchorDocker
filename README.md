@@ -64,8 +64,11 @@ Top open a Bash terminal session inside the Docker container:
 
 # TROUBLESHOOTING
 
-If you see an error like:
+## Anchor Error `lock file version 4 requires `-Znext-lockfile-bump`
 
+Edit Cargo.lock and change version from 4 to 3
+
+## Docker issue
 `
 ERROR: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head "http://%2Fvar%2Frun%2Fdocker.sock/_ping": dial unix /var/run/docker.sock: connect: permission denied
 `
