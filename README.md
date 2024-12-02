@@ -1,18 +1,8 @@
 A user-friendly Solana Anchor Docker solution that eliminates setup hurdles and simplifies the development workflow.
 
-# IMPORTANT !!
-
-Doesn't work on ARM Macs, so doesn't work on M1, M2 etc.
-
-Works on all x86 platforms, including Linux, Windows and Mac hosts.
-
-Works on GitPod and CodeSpaces.
-
-Why not ARM Mac? Docker on a ARM Macs installs ARM version of Linux and Solana doesn't provide ARM Linux binaries.
-
 # VERY IMPORTANT
 
-[Like and ReX](https://x.com/mevresearch/status/1863686729019908260)
+[Like and ReX](https://x.com/mevresearch/status/1863686729019908260) to support the project
 
 # SETUP
 
